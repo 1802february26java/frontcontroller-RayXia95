@@ -31,7 +31,7 @@ public class CustomerControllerRegister implements CustomerController
 
 	if (CustomerServiceAlpha.getCustomerService().registerCustomer(customer))
 	{
-	    request.getSession().setAttribute("customer", customer);
+	    request.getSession().setAttribute("loggedCustomer", customer);
 	    return new ClientMessage("REGISTRATION SUCCESSFUL");
 	}
 	else
@@ -43,6 +43,13 @@ public class CustomerControllerRegister implements CustomerController
     @Override
     public Object getAllCustomers(HttpServletRequest request)
     {
+	Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
+	/* if customer is not looged in */
+	if (customer == null)
+	{
+	    return "login.html";
+	}
+
 	/* Client is requesting the view*/
 	if (request.getParameter("fetch") == null)
 	{

@@ -44,7 +44,13 @@ public class LoginControllerLogout implements LoginController
     @Override
     public String logout(HttpServletRequest request)
     {
-	return null;
+	//throw new RuntimeException("LoggingOut");
+	/*
+	 * If session.invalidate() doesn't work for you
+	 */
+	//request.getSession().setAttribute("loggedCustomer", null);
+	request.getSession().invalidate();
+	return "login.html";
     }
 
 }
