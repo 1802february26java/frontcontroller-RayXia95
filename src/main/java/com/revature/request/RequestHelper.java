@@ -3,6 +3,7 @@ package com.revature.request;
 import javax.servlet.http.HttpServletRequest;
 
 import com.revatire.controller.CustomerControllerRegister;
+import com.revatire.controller.HomeControllerImpl;
 import com.revatire.controller.LoginControllerLogout;
 
 public class RequestHelper
@@ -22,6 +23,8 @@ public class RequestHelper
 		return CustomerControllerRegister.getInstance().register(request);
 	    case "/FrontController/getAll.do":
 		return CustomerControllerRegister.getInstance().getAllCustomers(request);
+	    case "/FrontController/home.do":
+		return HomeControllerImpl.getInstance().home(request);
 	    default:
 		return "404.html";
 	}

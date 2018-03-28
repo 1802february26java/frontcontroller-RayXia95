@@ -26,7 +26,7 @@ public class CustomerControllerRegister implements CustomerController
 	    return "register.html";
 	}
 
-	Customer customer = new Customer(0, request.getParameter("firstname"), request.getParameter("lastname"),
+	Customer customer = new Customer(0, request.getParameter("firstName"), request.getParameter("lastName"),
 		request.getParameter("username"), request.getParameter("password"));
 
 	if (CustomerServiceAlpha.getCustomerService().registerCustomer(customer))
@@ -53,7 +53,7 @@ public class CustomerControllerRegister implements CustomerController
 	/* Client is requesting the view*/
 	if (request.getParameter("fetch") == null)
 	{
-	    return "all-customers.html";
+	    return "list-customer.html";
 	}
 	else
 	{
